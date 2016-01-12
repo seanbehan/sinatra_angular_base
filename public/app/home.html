@@ -1,0 +1,11 @@
+<input type="text" ng-model='search' placeholder='Filter: '>
+<ul>
+  <li ng-repeat='user in users | filter: search'>
+    {{user.name}}
+  </li>
+</ul>
+
+<form ng-submit='save(user)'>
+  <input type='text' ng-model='user.name' placeholder="User's name">
+  <button>Save</button>
+</form>
