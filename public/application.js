@@ -22,7 +22,7 @@ angular.module('app', ['ngRoute'])
   }
 })
 
-.controller("Home/show", function($scope, $http){
+.controller("Home/show", function($scope){
   get('/users.json').success(function(resp){
     $scope.users = resp.users
   })
