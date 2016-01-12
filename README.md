@@ -13,6 +13,6 @@ rake db:migrate
 ruby app.rb
 ```
 
-Visit localhost:4567/
+Visit http://localhost:4567/
 
 ##
