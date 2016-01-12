@@ -1,7 +1,9 @@
 <input type="text" ng-model='search' placeholder='Filter: '>
 <ul>
   <li ng-repeat='user in users | filter: search'>
-    {{user.name}}
+    <a href="{{user.url}}">
+      {{user.name}}
+    </a>
   </li>
 </ul>
 

@@ -9,8 +9,12 @@ class ActiveRecord::Base
     self.uuid ||= SecureRandom.uuid if respond_to?(:uuid)
   end
 
+  def resource_name
+    self.class.name.underscore.pluralize
+  end
+
   def url
-    [nil, self.class.name.underscore, to_param].join('/')
+    [nil, resource_name, to_param].join('/')
   end
 
   def to_param
@@ -19,4 +23,5 @@ class ActiveRecord::Base
 end
 
 class User < ActiveRecord::Base
+  validates :name, presence: true
 end

@@ -1,11 +1,11 @@
-require 'sinatra'
-require 'sinatra/reloader'
 require 'json'
+require 'sinatra'
 
 require_relative 'models.rb'
 require_relative 'helpers.rb'
 
 unless ENV['RACK_ENV'] == 'production'
+  require 'sinatra/reloader'
   also_reload './models.rb'
   also_reload './helpers.rb'
 end
@@ -19,7 +19,7 @@ before /\.json/ do
 end
 
 get '/users.json' do
-  {users: User.all }.to_json
+  {users: User.all.map { |user| user.attributes.merge(url:user.url) }}.to_json
 end
 
 post '/users.json' do
